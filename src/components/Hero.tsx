@@ -1,4 +1,7 @@
 import React from 'react';
+import headerImageSrc from '../assets/HeaderImage.png'; // Import the image
+import cardImage001 from '../assets/001.png'; // Import 001.png
+import cardImage002 from '../assets/002.png'; // Import 002.png
 
 const Hero: React.FC = () => {
   return (
@@ -29,79 +32,97 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          {/* Right side images */}
-          <div className="lg:w-1/2 relative">
-            {/* Main image - Replace with actual product image */}
-            <div className="relative z-10">
-              {/* 
-                IMPORTANT: Replace with your main hero image (green t-shirt)
-                Example: <img src="/images/green-tshirt.png" alt="Green T-shirt" className="w-full h-auto rounded-lg" />
-              */}
-              <div className="w-full h-64 md:h-80 bg-green-100 rounded-lg flex items-center justify-center">
-                <span className="text-green-700 font-medium">Green T-shirt Image</span>
-              </div>
-            </div>
-            
-            {/* Floating images - Replace with actual product images */}
-            {/* 
-              IMPORTANT: Replace all floating image placeholders below with your actual product images
-              These images should be positioned around the main image to create a dynamic composition
-              Example for each: <img src="/images/blue-jeans.png" alt="Blue Jeans" className="w-full h-full object-cover rounded-lg" />
-            */}
-            <div className="absolute top-10 -right-4 w-24 h-24 bg-blue-100 rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-xs text-blue-700">Blue Jeans</span>
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gray-100 rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-xs text-gray-700">Tag/Label</span>
-            </div>
-            <div className="absolute top-1/2 -left-8 w-20 h-20 bg-yellow-100 rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-xs text-yellow-700">Earth</span>
-            </div>
-            <div className="absolute bottom-10 right-0 w-28 h-28 bg-green-50 rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-xs text-green-700">Plant</span>
+          {/* Right side - Header image */}
+          <div className="lg:w-1/2 flex justify-center items-center mt-8 lg:mt-0">
+              <img
+                src={headerImageSrc}
+                alt="Upworn App Showcase" // You can update this alt text to be more descriptive
+                className="w-full h-auto max-w-md md:max-w-lg rounded-lg"
+                // max-w-md (or lg) helps keep the image from becoming too large on wider screens.
+                // Added rounded-lg for a softer look, remove if you prefer sharp edges.
+                // No shadow by default, similar to your preference for FooterImage.png
+              />
             </div>
           </div>
         </div>
         
         {/* Stats section */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gray-50 p-6 rounded-lg flex items-center">
-            <div className="bg-green-100 p-3 rounded-full mr-4">
-              {/* ADD ICON IMAGE HERE */}
-              <div className="w-8 h-8 bg-green-200 rounded-full"></div>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl mb-1">Over 5000 thousand expected donations</h3>
-              <div className="flex items-center">
-                {/* ADD AVATAR IMAGES HERE */}
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-green-300 border-2 border-white"></div>
-                  <div className="w-6 h-6 rounded-full bg-green-400 border-2 border-white"></div>
-                  <div className="w-6 h-6 rounded-full bg-green-500 border-2 border-white"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gray-50 p-6 rounded-lg flex items-center">
-            <div className="bg-green-100 p-3 rounded-full mr-4">
-              {/* ADD ICON IMAGE HERE */}
-              <div className="w-8 h-8 bg-green-200 rounded-full"></div>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl mb-1">Carbon emissions reductions</h3>
-              <div className="flex items-center">
-                {/* ADD AVATAR IMAGES HERE */}
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-blue-300 border-2 border-white"></div>
-                  <div className="w-6 h-6 rounded-full bg-blue-400 border-2 border-white"></div>
-                  <div className="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
-                </div>
-              </div>
-            </div>
+<div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+  {/* Card 001 - Donations */}
+  <div className="bg-gray-100 p-8 rounded-3xl relative overflow-hidden">
+    {/* Card number */}
+    <div className="absolute top-6 left-6 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-600">
+      001
+    </div>
+    
+    {/* Avatar group with plus button */}
+    <div className="absolute top-6 right-6 flex items-center">
+      <div className="flex -space-x-2 mr-2">
+        <img className="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Avatar 1" />
+        <img className="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1494790108755-2616b332c706?w=32&h=32&fit=crop&crop=face" alt="Avatar 2" />
+      </div>
+      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+        <span className="text-white text-lg font-bold">+</span>
+      </div>
+    </div>
+
+    {/* Main content */}
+    <div className="mt-16 flex items-center justify-between">
+      <div className="flex-1">
+        <h3 className="font-bold text-2xl text-gray-900 leading-tight">
+          Over 5000 thousand<br />expected donations
+        </h3>
+      </div>
+      
+      {/* Mock bag image */}
+      <div className="ml-6 flex-shrink-0">
+        <img
+          src={cardImage001}
+          alt="Donations representation"
+          className="w-20 h-20 object-contain" 
+        />
           </div>
         </div>
       </div>
+
+      {/* Card 002 - Carbon Emissions */}
+      <div className="bg-gray-100 p-8 rounded-3xl relative overflow-hidden">
+        {/* Card number */}
+        <div className="absolute top-6 left-6 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-600">
+          002
+        </div>
+        
+        {/* Avatar group with plus button */}
+        <div className="absolute top-6 right-6 flex items-center">
+          <div className="flex -space-x-2 mr-2">
+            <img className="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Avatar 1" />
+            <img className="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=32&h=32&fit=crop&crop=face" alt="Avatar 2" />
+            <img className="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face" alt="Avatar 3" />
+          </div>
+          <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+            <span className="text-white text-lg font-bold">+</span>
+          </div>
+        </div>
+
+        {/* Main content */}
+        <div className="mt-16 flex items-center justify-between">
+          <div className="flex-1">
+            <h3 className="font-bold text-2xl text-gray-900 leading-tight">
+              Carbon emmissions<br />reductions
+            </h3>
+          </div>
+          
+          {/* Mock recycle arrows image */}
+          <div className="ml-6 flex-shrink-0">
+            <img
+              src={cardImage002}
+              alt="Carbon emissions reduction representation"
+              className="w-20 h-20 object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
     </section>
   );
 };

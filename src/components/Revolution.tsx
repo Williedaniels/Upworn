@@ -1,4 +1,5 @@
 import React from 'react';
+import footerImage from '../assets/FooterImage.png'; // Assuming FooterImage.png is in src/assets/
 
 const Revolution: React.FC = () => {
   return (
@@ -27,29 +28,13 @@ const Revolution: React.FC = () => {
             </div>
           </div>
           
-          {/* Right side - Phone mockups */}
+          {/* Right side - Footer image */}
           <div className="lg:w-1/2 flex justify-center">
-            <div className="relative">
-              {/* Main phone */}
-              <div className="relative z-10 border-4 border-gray-800 rounded-3xl overflow-hidden bg-white shadow-xl">
-                {/* ADD PHONE SCREENSHOT IMAGE HERE */}
-                <div className="w-56 h-96 bg-gray-100 flex items-center justify-center">
-                  <span className="text-gray-500">App Screenshot</span>
-                </div>
-                {/* Phone home button */}
-                <div className="w-12 h-1 bg-gray-300 mx-auto mb-2 rounded-full"></div>
-              </div>
-              
-              {/* Secondary phone (slightly behind) */}
-              <div className="absolute -left-12 top-10 border-4 border-gray-800 rounded-3xl overflow-hidden bg-white shadow-xl transform -rotate-6">
-                {/* ADD PHONE SCREENSHOT IMAGE HERE */}
-                <div className="w-48 h-80 bg-gray-100 flex items-center justify-center">
-                  <span className="text-gray-500">App Screenshot</span>
-                </div>
-                {/* Phone home button */}
-                <div className="w-10 h-1 bg-gray-300 mx-auto mb-2 rounded-full"></div>
-              </div>
-            </div>
+            <img 
+              src={footerImage} 
+              alt="Footer Image" 
+              className="w-full h-auto"
+            />
           </div>
         </div>
       </div>

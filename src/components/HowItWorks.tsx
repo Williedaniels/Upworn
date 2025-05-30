@@ -1,4 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
+import step1Image from '../assets/Step1.png'; 
+import step2Image from '../assets/Step2.png';
+import step3Image from '../assets/Step3.png';
+import step4Image from '../assets/Step4.png';
+
+// Placeholder Icon Components
+// You can replace these with more detailed SVGs or icon library components
+const HomeIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+  </svg>
+);
+
+const HandHoldingHeartIcon: React.FC<{ className?: string }> = ({ className }) => (
+  // Simplified to a heart icon for placeholder purposes
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+  </svg>
+);
+
+const SafetyCollectionPlaceIcon: React.FC<{ className?: string }> = ({ className }) => (
+  // Using a location pin as a placeholder
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
+
+const WorldIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+  </svg>
+);
 
 const HowItWorks: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -11,25 +44,29 @@ const HowItWorks: React.FC = () => {
       id: 1,
       title: "Discover Donations",
       description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
-      phoneImage: "step1_phone.png" // Replace with actual image path
+      phoneImage: step1Image,
+      icon: HomeIcon,
     },
     {
       id: 2,
-      title: "Find What You Don't Need",
+      title: "Give What You Don't Need",
       description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
-      phoneImage: "step2_phone.png" // Replace with actual image path
+      phoneImage: step2Image,
+      icon: HandHoldingHeartIcon,
     },
     {
       id: 3,
       title: "Connect with Donors",
       description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
-      phoneImage: "step3_phone.png" // Replace with actual image path
+      phoneImage: step3Image,
+      icon: SafetyCollectionPlaceIcon,
     },
     {
       id: 4,
       title: "Track Your Impact",
       description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
-      phoneImage: "step4_phone.png" // Replace with actual image path
+      phoneImage: step4Image,
+      icon: WorldIcon,
     }
   ];
 
@@ -95,7 +132,7 @@ const HowItWorks: React.FC = () => {
             {steps.map((step, index) => (
               <div 
                 key={step.id}
-                ref={el => stepsRef.current[index] = el}
+                ref={el => { stepsRef.current[index] = el; }}
                 className={`flex mb-8 transition-all duration-500 ${
                   activeStep === index 
                     ? 'opacity-100 transform translate-x-0' 
@@ -105,17 +142,24 @@ const HowItWorks: React.FC = () => {
                 <div className="mr-6 flex flex-col items-center">
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500 ${
                     activeStep === index 
-                      ? 'bg-green-600 text-white' 
-                      : 'bg-gray-200 text-gray-600'
+                      ? 'bg-green-700' // Darker green for active background
+                      : 'bg-gray-200'
                   }`}>
-                    {step.id}
+                    <step.icon className={`h-6 w-6 ${
+                      activeStep === index
+                        ? 'text-white'
+                        : 'text-green-800' // Darker green for inactive icon
+                    }`} />
                   </div>
                   {index < steps.length - 1 && (
                     <div className="w-0.5 h-16 bg-gray-200"></div>
                   )}
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl mb-2">{step.title}</h3>
+                  <h3 className="text-xl mb-2">
+                    <strong className="font-bold">Step {step.id}:</strong>
+                    <span className="font-bold"> {step.title}</span>
+                  </h3>
                   <p className="text-gray-600">{step.description}</p>
                 </div>
               </div>
@@ -124,33 +168,24 @@ const HowItWorks: React.FC = () => {
           
           {/* Right side - Phone mockup */}
           <div className="lg:w-1/2 flex justify-center sticky top-1/4">
-            <div ref={phoneRef} className="relative w-64 h-auto transition-all duration-700">
-              {/* Phone frame */}
-              <div className="border-4 border-gray-800 rounded-3xl overflow-hidden bg-white shadow-xl">
-                {/* Phone content - Replace with actual app screenshots */}
-                <div className="pt-8 pb-10 px-4">
-                  {/* ADD PHONE SCREENSHOT IMAGES HERE */}
-                  {steps.map((step, index) => (
-                    <div 
-                      key={index}
-                      className={`w-full h-96 rounded-lg flex items-center justify-center transition-opacity duration-500 absolute top-8 left-4 right-4 ${
-                        activeStep === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                      }`}
-                      style={{
-                        backgroundColor: ['#f0fdf4', '#e0f2fe', '#fef3c7', '#fce7f3'][index % 4]
-                      }}
-                    >
-                      <div className="text-center">
-                        <span className="text-gray-700 font-medium">App Screenshot for Step {index + 1}</span>
-                        <p className="text-xs text-gray-500 mt-2">User will need to add phone images for each step</p>
-                      </div>
-                    </div>
-                  ))}
-                  {/* Default placeholder to maintain height */}
-                  <div className="w-full h-96 bg-transparent"></div>
-                </div>
-                {/* Phone home button */}
-                <div className="w-12 h-1 bg-gray-300 mx-auto mb-2 rounded-full"></div>
+            <div ref={phoneRef} className="relative max-w-[240px] w-full transition-all duration-700 rounded-lg overflow-hidden">
+              {/* Phone content - Full size images */}
+              <div className="relative">
+                {steps.map((step, index) => (
+                  <div 
+                    key={index}
+                    className={`transition-opacity duration-500 ${
+                      activeStep === index ? 'opacity-100 z-10' : 'opacity-0 z-0 absolute top-0 left-0 w-full'
+                    }`}
+                  >
+                    {/* Display the phone image at full size */}
+                    <img 
+                      src={step.phoneImage} 
+                      alt={`Step ${step.id} Screenshot`} 
+                      className="w-full h-auto object-contain rounded-lg"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

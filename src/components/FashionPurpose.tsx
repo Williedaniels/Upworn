@@ -13,45 +13,37 @@ const FashionPurpose: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          {/* Card 1 */}
+          {/* Card 1 - Textile Waste */}
           <div className="bg-white rounded-lg p-6 text-center flex flex-col items-center">
             <div className="bg-green-100 p-4 rounded-full mb-6">
-              {/* ADD ICON IMAGE HERE */}
-              <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
-                <span className="text-green-700">Icon</span>
-              </div>
+              {/* Waste SVG Icon */}
+              <img src="/public/Waste.svg" alt="Waste Icon" className="h-12 w-12 text-green-700" />
             </div>
             <h3 className="font-bold text-xl mb-3">Textile Waste</h3>
             <p className="text-gray-600">
-              Turn textile waste into wealth, giving them new life and purpose in our circular economy.
+              We divert thousands of clothing items from landfills each month, giving them new life and purpose in our circular economy.
             </p>
           </div>
           
-          {/* Card 2 */}
+          {/* Card 2 - Clothes to Communities */}
           <div className="bg-white rounded-lg p-6 text-center flex flex-col items-center">
             <div className="bg-green-100 p-4 rounded-full mb-6">
-              {/* ADD ICON IMAGE HERE */}
-              <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
-                <span className="text-green-700">Icon</span>
-              </div>
+              <img src="/public/People.svg" alt="People Icon" className="h-12 w-12 text-green-700" />
             </div>
-            <h3 className="font-bold text-xl mb-3">Textile Reuse</h3>
+            <h3 className="font-bold text-xl mb-3">Clothes to Communities</h3>
             <p className="text-gray-600">
-              Items benefit much-needed, giving them new life and purpose in our circular economy.
+              Your donations directly benefit those in need - from refugee camps to orphanages, creating impact where it matters most.
             </p>
           </div>
           
-          {/* Card 3 */}
+          {/* Card 3 - Digital Closet Refresh */}
           <div className="bg-white rounded-lg p-6 text-center flex flex-col items-center">
             <div className="bg-green-100 p-4 rounded-full mb-6">
-              {/* ADD ICON IMAGE HERE */}
-              <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
-                <span className="text-green-700">Icon</span>
-              </div>
+              <img src="/public/Refresh.svg" alt="Refresh Icon" className="h-12 w-12 text-green-700" />
             </div>
-            <h3 className="font-bold text-xl mb-3">Textile Donate</h3>
+            <h3 className="font-bold text-xl mb-3">Digital Closet Refresh</h3>
             <p className="text-gray-600">
-              Your textiles each month, giving them new life and purpose in our circular economy.
+              Our app makes it easy to track your donations, earn points, and shop sustainably - all while making a real difference.
             </p>
           </div>
         </div>
