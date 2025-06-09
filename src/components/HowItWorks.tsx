@@ -1,36 +1,49 @@
 import React, { useState, useEffect, useRef } from 'react';
-import step1Image from '../assets/Step1.png'; 
-import step2Image from '../assets/Step2.png';
-import step3Image from '../assets/Step3.png';
-import step4Image from '../assets/Step4.png';
+import step1Image from '../assets/phone.svg'; 
+import step2Image from '../assets/phone2.svg';
+import step3Image from '../assets/phone3.svg';
+import step4Image from '../assets/phone4.svg';
 
 // Placeholder Icon Components
 // You can replace these with more detailed SVGs or icon library components
-const HomeIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-  </svg>
+const HomeIcon: React.FC<{ className?: string; isActive?: boolean }> = ({ className, isActive }) => (
+ <img 
+  width="32" 
+  height="32" 
+  src={isActive ? "https://img.icons8.com/puffy/32/ffffff/home.png" : "https://img.icons8.com/puffy/32/0E470F/home.png"}
+  alt="home"
+  className="w-6 h-6 sm:w-8 sm:h-8"
+/>
 );
 
-const HandHoldingHeartIcon: React.FC<{ className?: string }> = ({ className }) => (
-  // Simplified to a heart icon for placeholder purposes
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-  </svg>
+const HandHoldingHeartIcon: React.FC<{ className?: string; isActive?: boolean }> = ({ className, isActive }) => (
+ <img 
+  width="32" 
+  height="32" 
+  src={isActive ? "https://img.icons8.com/fluency-systems-regular/32/ffffff/hand-holding-heart.png" : "https://img.icons8.com/fluency-systems-regular/32/0E470F/hand-holding-heart.png"}
+  alt="home"
+  className="w-6 h-6 sm:w-8 sm:h-8"
+/>
 );
 
-const SafetyCollectionPlaceIcon: React.FC<{ className?: string }> = ({ className }) => (
-  // Using a location pin as a placeholder
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-  </svg>
+const SafetyCollectionPlaceIcon: React.FC<{ className?: string; isActive?: boolean }> = ({ className, isActive }) => (
+ <img 
+  width="32" 
+  height="32" 
+  src={isActive ? "https://img.icons8.com/fluency-systems-regular/32/ffffff/crowd.png" : "https://img.icons8.com/fluency-systems-regular/32/0E470F/crowd.png"}
+  alt="home"
+  className="w-6 h-6 sm:w-8 sm:h-8"
+/>
 );
 
-const WorldIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-  </svg>
+const WorldIcon: React.FC<{ className?: string; isActive?: boolean }> = ({ className, isActive }) => (
+ <img 
+  width="32" 
+  height="32" 
+  src={isActive ? "https://img.icons8.com/fluency-systems-regular/32/ffffff/green-earth.png" : "https://img.icons8.com/fluency-systems-regular/32/0E470F/green-earth.png"}
+  alt="home"
+  className="w-6 h-6 sm:w-8 sm:h-8"
+/>
 );
 
 const HowItWorks: React.FC = () => {
@@ -75,107 +88,139 @@ const HowItWorks: React.FC = () => {
     stepsRef.current = stepsRef.current.slice(0, steps.length);
   }, [steps.length]);
 
-  // Scroll animation logic
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
-      const sectionHeight = sectionRect.height;
-      const windowHeight = window.innerHeight;
-      
-      // Only activate when section is in view
-      if (sectionTop < windowHeight && sectionTop > -sectionHeight + 100) {
-        // Calculate which step should be active based on scroll position
-        const sectionProgress = Math.abs(sectionTop - windowHeight / 2) / (sectionHeight / 2);
-        const normalizedProgress = Math.max(0, Math.min(1, sectionProgress));
-        
-        // Map progress to step index (0 to 3)
-        const stepIndex = Math.min(
-          steps.length - 1,
-          Math.floor(normalizedProgress * steps.length)
-        );
-        
-        if (stepIndex !== activeStep) {
-          setActiveStep(stepIndex);
-          
-          // Add animation to phone
-          if (phoneRef.current) {
-            phoneRef.current.classList.add('transition-transform', 'duration-500');
-            phoneRef.current.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-              if (phoneRef.current) {
-                phoneRef.current.style.transform = 'translateY(0)';
-              }
-            }, 300);
-          }
+// Scroll animation logic
+useEffect(() => {
+  let isScrolling = false;
+  
+const handleScroll = () => {
+  if (isScrolling) return;
+
+  isScrolling = true;
+  requestAnimationFrame(() => {
+    if (!sectionRef.current) {
+      isScrolling = false;
+      return;
+    }
+
+    const sectionRect = sectionRef.current.getBoundingClientRect();
+    const sectionTop = sectionRect.top;
+    const sectionHeight = sectionRect.height;
+    const windowHeight = window.innerHeight;
+
+    const scrolledIntoSection = Math.abs(sectionTop);
+    const availableScrollDistance = sectionHeight - windowHeight;
+
+    if (sectionTop <= 0 && sectionTop + sectionHeight >= windowHeight) {
+      const scrollProgress = Math.min(1, scrolledIntoSection / availableScrollDistance);
+
+      const stepSize = 1 / steps.length;
+
+      // Determine which step zone the user is currently in
+      let newStep = 0;
+      for (let i = 0; i < steps.length; i++) {
+        const start = i * stepSize;
+        const end = (i + 1) * stepSize;
+
+        if (scrollProgress >= start && scrollProgress < end) {
+          newStep = i;
+          break;
         }
       }
-    };
 
-    window.addEventListener('scroll', handleScroll);
-    // Initial check
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeStep, steps.length]);
+      if (newStep !== activeStep) {
+        setActiveStep(newStep);
+
+        // Bounce animation (optional)
+        if (phoneRef.current) {
+          phoneRef.current.style.transition = 'transform 0.6s ease';
+          phoneRef.current.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            if (phoneRef.current) {
+              phoneRef.current.style.transform = 'translateY(0)';
+            }
+          }, 300);
+        }
+      }
+    }
+
+    isScrolling = false;
+  });
+};
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  // Initial check
+  handleScroll();
+  
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [activeStep, steps.length]);
 
   return (
-    <section ref={sectionRef} className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20 min-h-screen">
+    <section ref={sectionRef} className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 md:px-12 lg:px-20 min-h-screen">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-center text-3xl md:text-4xl font-bold mb-16">HOW DOES THE APP WORK?</h2>
+        <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium mb-8 sm:mb-12 lg:mb-16">HOW DOES THE APP WORK?</h2>
         
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-0">
           {/* Left side - Steps */}
-          <div className="lg:w-1/2 mb-10 lg:mb-0">
+          <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
             {steps.map((step, index) => (
               <div 
                 key={step.id}
                 ref={el => { stepsRef.current[index] = el; }}
-                className={`flex mb-8 transition-all duration-500 ${
+                className={`flex mb-4 sm:mb-6 lg:mb-8 transition-all duration-500 ${
                   activeStep === index 
                     ? 'opacity-100 transform translate-x-0' 
-                    : 'opacity-50 transform -translate-x-4'
+                    : 'opacity-50 transform -translate-x-2 lg:-translate-x-4'
                 }`}
               >
-                <div className="mr-6 flex flex-col items-center">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500 ${
+                <div className="mr-3 sm:mr-4 lg:mr-6 flex flex-col items-center">
+                  {/* Circle with icon */}
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center transition-all duration-500 ${
                     activeStep === index 
-                      ? 'bg-green-700' // Darker green for active background
-                      : 'bg-gray-200'
-                  }`}>
-                    <step.icon className={`h-6 w-6 ${
-                      activeStep === index
-                        ? 'text-white'
-                        : 'text-green-800' // Darker green for inactive icon
-                    }`} />
+                      ? 'bg-gradient-to-r from-[#0E470F] to-[#22AD25]' 
+                      : 'bg-white border-2'
+                  }`}
+                  style={activeStep !== index ? {
+                    borderImage: 'linear-gradient(45deg, #0E470F, #22AD25) 1',
+                    border: '2px solid transparent',
+                    backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #0E470F, #22AD25)',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'content-box, border-box'
+                  } : {}}
+                  >
+                    <step.icon 
+                      className={`${
+                        activeStep === index
+                          ? 'text-white'
+                          : 'text-green-800'
+                      }`} 
+                      isActive={activeStep === index}
+                    />
                   </div>
                   {index < steps.length - 1 && (
-                    <div className="w-0.5 h-16 bg-gray-200"></div>
+                    <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gray-200"></div>
                   )}
                 </div>
-                <div>
-                  <h3 className="text-xl mb-2">
+                <div className="flex-1">
+                  <h3 className="text-base sm:text-lg lg:text-xl mb-1 sm:mb-2">
                     <strong className="font-bold">Step {step.id}:</strong>
-                    <span className="font-bold"> {step.title}</span>
+                    <span className=""> {step.title}</span>
                   </h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
           
           {/* Right side - Phone mockup */}
-          <div className="lg:w-1/2 flex justify-center sticky top-1/4">
-            <div ref={phoneRef} className="relative max-w-[240px] w-full transition-all duration-700 rounded-lg overflow-hidden">
+          <div className="w-full lg:w-1/2 flex justify-center lg:sticky lg:top-1/4">
+            <div ref={phoneRef} className="relative max-w-[200px] sm:max-w-[250px] lg:max-w-[300px] w-full transition-all duration-700 rounded-lg overflow-hidden">
               {/* Phone content - Full size images */}
               <div className="relative">
                 {steps.map((step, index) => (
                   <div 
                     key={index}
                     className={`transition-opacity duration-500 ${
-                      activeStep === index ? 'opacity-100 z-10' : 'opacity-0 z-0 absolute top-0 left-0 w-full'
+                      activeStep === index ? 'opacity-100 z-10' : 'opacity-0 z-0 absolute top-0 right-0 left-0 w-full'
                     }`}
                   >
                     {/* Display the phone image at full size */}

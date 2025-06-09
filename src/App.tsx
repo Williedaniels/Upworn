@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-poppins">
       <Header />
       <main>
         <Hero />
@@ -26,7 +26,7 @@ function App() {
         <PartnerWaitlist />
         <Revolution />
       </main>
-      <Footer />
+    
     </div>
   );
 }
