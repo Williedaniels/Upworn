@@ -6,7 +6,7 @@ const MapImpactSection = () => {
   const [animatedAmount, setAnimatedAmount] = useState(0);
   const [animatedContributors, setAnimatedContributors] = useState(0);
   
-  const targetAmount = 10250;
+  const targetAmount = 500000; 
   const targetContributors = 512;
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const MapImpactSection = () => {
   }, []);
 
   return (
-    <section className="relative py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
+    <section id="impact" className="relative py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -61,9 +61,9 @@ const MapImpactSection = () => {
         {/* Header */}
         <div className="text-center mb-0">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight max-w-4xl mx-auto px-4">
-            EcoThreads is helping communities worldwide with
+            Upworn is helping communities across Africa with
             <span className="text-green-600"> sustainable clothing solutions</span>.
-            Join us to reduce waste and make a difference for every community today.
+            Join us to reduce waste and make a difference for every community.
           </h2>
         </div>
 
@@ -103,9 +103,9 @@ const MapImpactSection = () => {
             {/* Floating Stats Cards - Responsive positioning */}
             <div className="absolute top-2 right-2 sm:top-4 sm:right-4 md:top-8 md:right-8 lg:top-12 lg:right-12">
               <div className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-xl p-2 sm:p-4 md:p-6 border border-green-100 max-w-[150px] sm:max-w-[200px] md:max-w-none">
-                <div className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Total Impact</div>
+                <div className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Total Expected Impact</div>
                 <div className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
-                  ${animatedAmount.toLocaleString()}.00
+                  {animatedAmount.toLocaleString()} <span className='text-[10px] sm:text-xs md:text-sm text-gray-600 font-normal'>clothing donations</span>
                 </div>
                 <div className="flex items-center gap-1 sm:gap-2 md:gap-3">
                   {/* Avatar Stack */}
@@ -113,9 +113,15 @@ const MapImpactSection = () => {
                     <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-green-400 to-green-500 border-1 sm:border-2 border-white">
                       <img className='w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full' src="/src/assets/avatar1.jpg" alt="" />
                     </div>
-                    <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 border-1 sm:border-2 border-white"></div>
-                    <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-purple-400 to-purple-500 border-1 sm:border-2 border-white"></div>
-                    <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 border-1 sm:border-2 border-white"></div>
+                    <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 border-1 sm:border-2 border-white">
+                      <img className='w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full' src="/src/assets/alison-erickson-Zt8IkNfhk54-unsplash.jpg" alt="" />
+                    </div>
+                    <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-purple-400 to-purple-500 border-1 sm:border-2 border-white">
+                      <img className='w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full' src="/src/assets/kim-carpenter-IHIgnhLvz5Q-unsplash.jpg" alt="" />
+                    </div>
+                    <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 border-1 sm:border-2 border-white">
+                      <img className='w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full' src="/src/assets/african-american-woman-smiling-with-hand-chin.jpg" alt="" />
+                    </div>
                     <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full bg-gray-300 border-1 sm:border-2 border-white flex items-center justify-center text-[8px] sm:text-xs text-gray-600 font-semibold">
                       +{animatedContributors - 4}
                     </div>
@@ -139,11 +145,11 @@ const MapImpactSection = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold text-xs sm:text-sm md:text-base">Global Reach</div>
-                    <div className="text-[10px] sm:text-xs md:text-sm text-white/80">Making impact worldwide</div>
+                    <div className="font-semibold text-xs sm:text-sm md:text-base">Expected Reach</div>
+                    <div className="text-[10px] sm:text-xs md:text-sm text-white/80">Making impact across Africa</div>
                   </div>
                 </div>
-                <div className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-1">25+ Countries</div>
+                <div className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-1">15+ Countries</div>
                 <div className="text-[10px] sm:text-xs md:text-sm text-white/90">Communities supported through clothing donations</div>
               </div>
             </div>
@@ -165,11 +171,11 @@ const MapImpactSection = () => {
           {/* Bottom Stats */}
           <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-ecogreen mb-2">5,000+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-ecogreen mb-2">500,000+</div>
               <div className="text-gray-700 text-sm sm:text-base">Items Donated</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-ecogreen mb-2">25+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-ecogreen mb-2">15+</div>
               <div className="text-gray-700 text-sm sm:text-base">Countries Reached</div>
             </div>
             <div className="text-center">

@@ -17,11 +17,11 @@ const Hero: React.FC = () => {
               Upworn helps you donate your <span className='underline'> pre-loved</span> clothes to those in need. Simply <span className='underline'> donate </span> what you don't need, <span className='underline'> earn points,</span> and shop guilt-free.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 sm:gap-10">
-              <a href="#join" className="border border-black text-black text-base sm:text-lg px-4 sm:px-6 py-2.5 rounded-full flex items-center justify-center hover:bg-green-800 transition-colors">
+              <a href="#contact" className="border border-black text-black text-base sm:text-lg px-4 sm:px-6 py-2.5 rounded-full flex items-center justify-center hover:scale-105 hover:shadow-lg">
                 Join Upworn Now
                 <img className='h-7 sm:h-9 ml-2' src="/src/assets/Peercoin.png" alt="" />
               </a>
-              <a href="#learn" className="text-black text-base sm:text-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
+              <a href="#learn" className="text-black text-base sm:text-lg flex items-center justify-center hover:scale-105">
                 Learn More
                 <img className='h-10 sm:h-12 ml-2' src="/src/assets/arrowcircle.png" alt="" />
               </a>

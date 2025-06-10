@@ -2,7 +2,7 @@ import React from 'react';
 
 const PartnerWaitlist: React.FC = () => {
   return (
-    <section className="bg-white py-16 px-4 md:px-12 lg:px-20 mb-8">
+    <section id="contact" className="bg-white py-16 px-4 md:px-12 lg:px-20 mb-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center text-xl md:text-2xl font-bold mb-3">Become an Upworn Partner or Join the Waitlist</h2>
         

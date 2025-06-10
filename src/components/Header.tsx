@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,13 +23,13 @@ const Header: React.FC = () => {
             
       {/* Navigation */}
       <nav className="hidden md:flex items-center space-x-3">
-         <a href="#solutions" className="text-white rounded-full bg-ecogreen px-3.5 py-1 hover:bg-green-800 transition-colors">Home</a>
+         <a href="/" className="text-white rounded-full bg-ecogreen px-3.5 py-1 hover:bg-green-800 transition-colors">Home</a>
           <div className='rounded-full py-1 px-1 bg-lightgreen'></div>
         <a href="#about" className="text-gray-700 hover:text-green-700">About</a>
         <div className='rounded-full py-1 px-1 bg-lightgreen'></div>
-        <a href="#about" className="text-gray-700 hover:text-green-700">Features</a>
+        <a href="#features" className="text-gray-700 hover:text-green-700">Features</a>
         <div className='rounded-full py-1 px-1 bg-lightgreen'></div>
-        <a href="#problems" className="text-gray-700 hover:text-green-700">Impact</a>                         
+        <a href="#impact" className="text-gray-700 hover:text-green-700">Impact</a>                         
       </nav>
 
       {/* CTA Button */}

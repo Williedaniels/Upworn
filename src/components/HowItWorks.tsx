@@ -63,21 +63,21 @@ const HowItWorks: React.FC = () => {
     {
       id: 2,
       title: "Give What You Don't Need",
-      description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
+      description: "Upload items from your closet that you no longer use. Help someone in need while earning points and making space in your wardrobe.",
       phoneImage: step2Image,
       icon: HandHoldingHeartIcon,
     },
     {
       id: 3,
       title: "Connect with Donors",
-      description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
+      description: "Engage with like-minded individuals who share your values. Chat with donors, exchange fashion tips, and build a supportive network of conscious consumers.",
       phoneImage: step3Image,
       icon: SafetyCollectionPlaceIcon,
     },
     {
       id: 4,
       title: "Track Your Impact",
-      description: "Browse items people are giving away. Find clothes that match your style and get connected to the community.",
+      description: "Our AI tracks your sustainability contributions, from CO₂ savings to landfill reduction, giving you a real-time view of how your donations are helping the planet.",
       phoneImage: step4Image,
       icon: WorldIcon,
     }
@@ -90,72 +90,64 @@ const HowItWorks: React.FC = () => {
 
 // Scroll animation logic
 useEffect(() => {
-  let isScrolling = false;
-  
-const handleScroll = () => {
-  if (isScrolling) return;
+  let animationFrameId: number;
+  let lastScrollTime = 0;
+  const scrollThrottle = 50; // milliseconds
 
-  isScrolling = true;
-  requestAnimationFrame(() => {
-    if (!sectionRef.current) {
-      isScrolling = false;
-      return;
-    }
+  const handleScroll = () => {
+    const now = Date.now();
+    if (now - lastScrollTime < scrollThrottle) return;
+    
+    lastScrollTime = now;
+    
+    animationFrameId = requestAnimationFrame(() => {
+      if (!sectionRef.current) return;
 
-    const sectionRect = sectionRef.current.getBoundingClientRect();
-    const sectionTop = sectionRect.top;
-    const sectionHeight = sectionRect.height;
-    const windowHeight = window.innerHeight;
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRect.top;
+      const sectionHeight = sectionRect.height;
+      const windowHeight = window.innerHeight;
 
-    const scrolledIntoSection = Math.abs(sectionTop);
-    const availableScrollDistance = sectionHeight - windowHeight;
+      // Only proceed if section is in view
+      if (sectionTop <= windowHeight && sectionTop + sectionHeight >= 0) {
+        const scrolledIntoSection = Math.max(0, -sectionTop);
+        const availableScrollDistance = sectionHeight - windowHeight;
+        const scrollProgress = Math.min(1, Math.max(0, scrolledIntoSection / availableScrollDistance));
 
-    if (sectionTop <= 0 && sectionTop + sectionHeight >= windowHeight) {
-      const scrollProgress = Math.min(1, scrolledIntoSection / availableScrollDistance);
+        // Calculate active step based on scroll progress
+        const stepSize = 1 / steps.length;
+        const newStep = Math.min(steps.length - 1, Math.floor(scrollProgress / stepSize));
 
-      const stepSize = 1 / steps.length;
-
-      // Determine which step zone the user is currently in
-      let newStep = 0;
-      for (let i = 0; i < steps.length; i++) {
-        const start = i * stepSize;
-        const end = (i + 1) * stepSize;
-
-        if (scrollProgress >= start && scrollProgress < end) {
-          newStep = i;
-          break;
+        if (newStep !== activeStep) {
+          setActiveStep(newStep);
+          animatePhoneBounce();
         }
       }
+    });
+  };
 
-      if (newStep !== activeStep) {
-        setActiveStep(newStep);
-
-        // Bounce animation (optional)
+  const animatePhoneBounce = () => {
+    if (phoneRef.current) {
+      phoneRef.current.style.transition = 'transform 0.3s ease';
+      phoneRef.current.style.transform = 'translateY(-8px)';
+      setTimeout(() => {
         if (phoneRef.current) {
-          phoneRef.current.style.transition = 'transform 0.6s ease';
-          phoneRef.current.style.transform = 'translateY(-10px)';
-          setTimeout(() => {
-            if (phoneRef.current) {
-              phoneRef.current.style.transform = 'translateY(0)';
-            }
-          }, 300);
+          phoneRef.current.style.transform = 'translateY(0)';
         }
-      }
+      }, 300);
     }
-
-    isScrolling = false;
-  });
-};
+  };
 
   window.addEventListener('scroll', handleScroll, { passive: true });
-  // Initial check
-  handleScroll();
+  handleScroll(); // Initial check
   
-  return () => window.removeEventListener('scroll', handleScroll);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+    cancelAnimationFrame(animationFrameId);
+  };
 }, [activeStep, steps.length]);
-
   return (
-    <section ref={sectionRef} className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 md:px-12 lg:px-20 min-h-screen">
+    <section id="features" ref={sectionRef} className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 md:px-12 lg:px-20 min-h-screen">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium mb-8 sm:mb-12 lg:mb-16">HOW DOES THE APP WORK?</h2>
         

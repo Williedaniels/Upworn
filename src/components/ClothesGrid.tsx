@@ -6,7 +6,7 @@ import furnitureImage from '../assets/Furniture.png';
 
 const ClothesGrid: React.FC = () => {
   return (
-    <section className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 md:px-12 lg:px-20 mt-12 sm:mt-16 lg:mt-20 mb-4 sm:mb-6">
+    <section id="learn" className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 md:px-12 lg:px-20 mt-12 sm:mt-16 lg:mt-20 mb-4 sm:mb-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-center flex-col items-center mb-8 sm:mb-10 lg:mb-12">
@@ -30,12 +30,12 @@ const ClothesGrid: React.FC = () => {
             <div className="absolute bottom-0 left-0 p-3 sm:p-4 lg:p-6 text-white">
               <h3 className="font-bold text-lg sm:text-xl mb-1 sm:mb-2">Community Donations</h3>
               <p className="text-xs sm:text-sm text-white/90 mb-2 sm:mb-3 lg:mb-4 leading-relaxed line-clamp-3">
-                Transforming worn-out clothes into stylish, functional products with our skilled artisans.
+                Delivering hope through clothing donations to refugee camps and vulnerable families in our local communities.
               </p>
               <div className="flex items-center gap-1 sm:gap-2">
                 <span className="bg-black/20 backdrop-blur-sm border border-white rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium flex items-center gap-1">
                   <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></span>
-                  <span className=" sm:inline">500+ clothing donations</span>
+                  <span className=" sm:inline">Impacting 100+ families</span>
                   
                 </span>
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
@@ -63,7 +63,7 @@ const ClothesGrid: React.FC = () => {
               <div className="flex items-center gap-1 sm:gap-2">
                 <span className="bg-black/20 backdrop-blur-sm border border-white rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium flex items-center gap-1">
                   <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></span>
-                  <span className=" sm:inline">500+ clothing donations</span>
+                  <span className=" sm:inline">1000+ items reborn</span>
                   
                 </span>
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
@@ -91,7 +91,7 @@ const ClothesGrid: React.FC = () => {
               <div className="flex items-center gap-1 sm:gap-2">
                 <span className="bg-black/20 backdrop-blur-sm border border-white rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium flex items-center gap-1">
                   <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></span>
-                  <span className="sm:inline">500+ clothing donations</span>
+                  <span className="sm:inline">200+ homes insulated</span>
                   
                 </span>
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
@@ -119,7 +119,7 @@ const ClothesGrid: React.FC = () => {
               <div className="flex items-center gap-1 sm:gap-2">
                 <span className="bg-black/20 backdrop-blur-sm border border-white rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium flex items-center gap-1">
                   <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></span>
-                  <span className="sm:inline">500+ clothing donations</span>
+                  <span className="sm:inline">3 tons of fabric saved</span>
                   
                 </span>
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">

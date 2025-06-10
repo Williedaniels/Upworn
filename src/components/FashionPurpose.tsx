@@ -2,7 +2,7 @@ import React from 'react';
 
 const FashionPurpose: React.FC = () => {
   return (
-    <div className="bg-white pt-8 pb-16 px-4 md:px-12 lg:px-20">
+    <div id="about" className="bg-white pt-8 pb-16 px-4 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center text-xl md:text-xl font-medium mb-5">FASHION WITH A PURPOSE</h2>
         
