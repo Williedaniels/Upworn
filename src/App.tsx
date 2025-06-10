@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './App.css';
 import './responsive.css';
 
@@ -11,7 +11,7 @@ import ClothesStats from './components/ClothesStats';
 import ClothesGrid from './components/ClothesGrid';
 import PartnerWaitlist from './components/PartnerWaitlist';
 import Revolution from './components/Revolution';
-import Footer from './components/Footer';
+
 
 function App() {
   return (
